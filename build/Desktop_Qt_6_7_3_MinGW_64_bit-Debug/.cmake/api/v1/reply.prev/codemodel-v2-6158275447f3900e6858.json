@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-26e7255c41a5da793a5a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "English_widget",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "English_widget::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-English_widget-Debug-437dfa8753d3c6f9daee.json",
+					"name" : "English_widget",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "English_widget_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-English_widget_autogen-Debug-a8b015960dc9f5fbf1f2.json",
+					"name" : "English_widget_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "English_widget_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-English_widget_autogen_timestamp_deps-Debug-d05ddd97a589d6f14663.json",
+					"name" : "English_widget_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Qt/English_widget/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug",
+		"source" : "C:/Qt/English_widget"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}
