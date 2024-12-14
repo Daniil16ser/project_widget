@@ -67,7 +67,7 @@ public:
 
         if (sqlite3_step(stmt) == SQLITE_ROW) {
             const unsigned char* text = sqlite3_column_text(stmt, 0);
-            int value = std::stoi(reinterpret_cast<const char*>(text)); // Преобразуем значение в int
+            int value = std::stoi(reinterpret_cast<const char*>(text)); // Преобразуем значение в int !!!!!!!!!!!!
             sqlite3_finalize(stmt);
             return value; // Возвращаем найденное значение
         } else {
@@ -75,6 +75,25 @@ public:
             sqlite3_finalize(stmt);
             return -1; // Возвращаем -1 если ключ не найден
         }
+    }
+    
+    void printAll() {
+        std::string sqlSelectAll = "SELECT key, value FROM kv_store;";
+        sqlite3_stmt* stmt;
+
+        if (sqlite3_prepare_v2(db, sqlSelectAll.c_str(), -1, &stmt, nullptr) != SQLITE_OK) {
+            std::cerr << "Ошибка подготовки SQL запроса: " << sqlite3_errmsg(db) << std::endl;
+            return;
+        }
+
+        while (sqlite3_step(stmt) == SQLITE_ROW) {
+            const unsigned char* key = sqlite3_column_text(stmt, 0);
+            const unsigned char* value = sqlite3_column_text(stmt, 1);
+            std::cout << "Ключ: " << reinterpret_cast<const char*>(key)
+                      << ", Значение: " << reinterpret_cast<const char*>(value) << std::endl;
+        }
+
+        sqlite3_finalize(stmt);
     }
 
 private:
