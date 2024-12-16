@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Test</class>
+ <widget class="QMainWindow" name="Test">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>696</width>
+    <height>592</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Test</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="backButton">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>10</y>
+      <width>83</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Back</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="limitedWordsTestButton">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>240</y>
+      <width>233</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>LIMITED WORDS TEST</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="endlessTestButton">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>60</y>
+      <width>233</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>ENDLESS TEST</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="limitedMistakesTestButton">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>420</y>
+      <width>233</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>LIMITED MISTAKES TEST</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
