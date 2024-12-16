@@ -37,7 +37,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>LIMITED WORDS TEST</string>
+     <string>LIMITED NUMBER OF WORDS TEST</string>
     </property>
    </widget>
    <widget class="QPushButton" name="endlessTestButton">
@@ -63,7 +63,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>LIMITED MISTAKES TEST</string>
+     <string>LIMITED NUMBER OF MISTAKES TEST</string>
     </property>
    </widget>
   </widget>

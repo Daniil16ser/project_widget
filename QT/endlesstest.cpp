@@ -20,6 +20,7 @@ void EndlessTest::on_backButton_clicked()
 {
     this -> close();
     emit Test();
+    delete this;
 }
 
 void EndlessTest::on_checkButton_clicked()

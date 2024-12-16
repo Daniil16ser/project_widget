@@ -1,9 +1,6 @@
 #ifndef TEST_H
 #define TEST_H
 
-#include "endlesstest.h"
-#include "limitedwordstest.h"
-#include "limitedmistakestest.h"
 #include <QMainWindow>
 
 namespace Ui {
@@ -28,10 +25,7 @@ private slots:
     void on_limitedMistakesTestButton_clicked();
 
 private:
-    Ui::Test *ui;
-    EndlessTest *endlessTestWindow;
-    LimitedWordsTest *limitedWordsTestWindow;
-    LimitedMistakesTest *limitedMistakesTestWindow;
+    Ui::Test *ui = nullptr;
 };
 
 #endif // TEST_H

@@ -20,6 +20,7 @@ void Learning::on_backButton_clicked()
 {
     this -> close();
     emit English();
+    delete this;
 }
 
 void Learning::on_showButton_clicked()

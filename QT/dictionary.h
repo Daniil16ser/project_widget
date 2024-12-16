@@ -25,7 +25,7 @@ private slots:
     void on_changeButton_clicked();
 
 private:
-    Ui::Dictionary *ui;
+    Ui::Dictionary *ui = nullptr;
 };
 
 #endif // DICTIONARY_H

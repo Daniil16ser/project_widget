@@ -24,7 +24,7 @@ private slots:
     void on_nextButton_clicked();
 
 private:
-    Ui::Learning *ui;
+    Ui::Learning *ui = nullptr;
     QString rusWord;
 };
 

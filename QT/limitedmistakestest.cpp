@@ -1,13 +1,14 @@
 #include "limitedmistakestest.h"
 #include "ui_limitedmistakestest.h"
 
-LimitedMistakesTest::LimitedMistakesTest(QWidget *parent)
+LimitedMistakesTest::LimitedMistakesTest(unsigned short mistakesLimit_, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::LimitedMistakesTest)
+    , mistakesLimit(mistakesLimit_)
 {
-    mistakesCounter = 3; // Нужно запросить у пользователя кол-во ошибок
-    // Нужно создать счетчик, показывающий кол-во ошибок
     ui->setupUi(this);
+    ui->score2Label->hide();
+    ui->mistakesLimitLabel->setText(QString::number(mistakesLimit));
     ui->nextButton->hide();
     QString nextWord = "AAAAA"; // Нужно реализовать функцию, возвращающую новое слово для перевода из БД
     engWord = nextWord;
@@ -23,6 +24,7 @@ void LimitedMistakesTest::on_backButton_clicked()
 {
     this -> close();
     emit Test();
+    delete this;
 }
 
 void LimitedMistakesTest::on_checkButton_clicked()
@@ -35,15 +37,20 @@ void LimitedMistakesTest::on_checkButton_clicked()
         ui->correctOrWrongLabel->setText("Correct!");
         ui->correctAnswerLabel->setText("");
         ++correctAnswersCounter;
+        ui->nextButton->show();
     } else {
-        // Нужно обновить счетчик, показывающий кол-во ошибок
+        ui->mistakesCounterLabel->setText(QString::number(++mistakesCounter));
         ui->correctOrWrongLabel->setText("Wrong! Correct answer is");
         ui->correctAnswerLabel->setText(answer);
-        if (++mistakesCounter == mistakesLimit) {
-            // Нужно показать пользователю финальный счет
+        if (mistakesCounter <= mistakesLimit) {
+            ui->nextButton->show();
+        } else {
+            ui->score1Label->setText("You correctly translated");
+            ui->mistakesCounterLabel->setText(QString::number(correctAnswersCounter));
+            ui->mistakesLimitLabel->setText(QString::number(correctAnswersCounter + mistakesCounter));
+            ui->score2Label->show();
         }
     }
-    ui->nextButton->show();
 }
 
 void LimitedMistakesTest::on_nextButton_clicked()

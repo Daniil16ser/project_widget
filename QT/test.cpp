@@ -1,5 +1,9 @@
 #include "test.h"
 #include "ui_test.h"
+#include "endlesstest.h"
+#include "limitedwordstest.h"
+#include "limitedmistakestest.h"
+#include <QInputDialog>
 
 Test::Test(QWidget *parent)
     : QMainWindow(parent)
@@ -15,13 +19,15 @@ Test::~Test()
 
 void Test::on_backButton_clicked()
 {
+
     this -> close();
     emit English();
+    delete this;
 }
 
 void Test::on_endlessTestButton_clicked()
 {
-    endlessTestWindow = new EndlessTest();
+    EndlessTest *endlessTestWindow = new EndlessTest();
     connect(endlessTestWindow, &EndlessTest::Test, this, &Test::show);
     endlessTestWindow -> show();
     this -> close();
@@ -29,18 +35,28 @@ void Test::on_endlessTestButton_clicked()
 
 void Test::on_limitedWordsTestButton_clicked()
 {
-    // Нужно запросить у пользователя кол-во слов
-    limitedWordsTestWindow = new LimitedWordsTest();
+    bool ok;
+    unsigned short wordsLimit = QInputDialog::getInt(this, "Number of Words",
+                                                     "Enter the number of words the test will contain",
+                                                     10, 1, 100, 1, &ok);
+    if (ok) {
+    LimitedWordsTest *limitedWordsTestWindow = new LimitedWordsTest(wordsLimit);
     connect(limitedWordsTestWindow, &LimitedWordsTest::Test, this, &Test::show);
     limitedWordsTestWindow -> show();
     this -> close();
+    }
 }
 
 void Test::on_limitedMistakesTestButton_clicked()
 {
-    // Нужно запросить у пользователя кол-во ошибок
-    limitedMistakesTestWindow = new LimitedMistakesTest();
+    bool ok;
+    unsigned short mistakesLimit = QInputDialog::getInt(this, "Number of Mistakes",
+                                                     "Enter the maximum allowed mistakes",
+                                                     3, 1, 50, 1, &ok);
+    if (ok) {
+    LimitedMistakesTest *limitedMistakesTestWindow = new LimitedMistakesTest(mistakesLimit);
     connect(limitedMistakesTestWindow, &LimitedMistakesTest::Test, this, &Test::show);
     limitedMistakesTestWindow -> show();
     this -> close();
+    }
 }

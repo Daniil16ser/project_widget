@@ -24,7 +24,7 @@ private slots:
     void on_nextButton_clicked();
 
 private:
-    Ui::EndlessTest *ui;
+    Ui::EndlessTest *ui = nullptr;
     QString engWord;
 };
 

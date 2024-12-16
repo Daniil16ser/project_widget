@@ -18,6 +18,7 @@ void Dictionary::on_backButton_clicked()
 {
     this -> close();
     emit English();
+    delete this;
 }
 
 void Dictionary::on_addButton_clicked()

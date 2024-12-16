@@ -12,7 +12,7 @@ class LimitedMistakesTest : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit LimitedMistakesTest(QWidget *parent = nullptr);
+    explicit LimitedMistakesTest(unsigned short mistakesLimit_, QWidget *parent = nullptr);
     ~LimitedMistakesTest();
 
 signals:
@@ -24,9 +24,9 @@ private slots:
     void on_nextButton_clicked();
 
 private:
-    Ui::LimitedMistakesTest *ui;
+    Ui::LimitedMistakesTest *ui = nullptr;
     QString engWord;
-    unsigned short mistakesLimit = 3;
+    unsigned short mistakesLimit;
     unsigned short mistakesCounter = 0;
     unsigned short correctAnswersCounter = 0;
 };

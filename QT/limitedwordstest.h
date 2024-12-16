@@ -12,7 +12,7 @@ class LimitedWordsTest : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit LimitedWordsTest(QWidget *parent = nullptr);
+    explicit LimitedWordsTest(unsigned short wordsLimit_, QWidget *parent = nullptr);
     ~LimitedWordsTest();
 
 signals:
@@ -24,9 +24,9 @@ private slots:
     void on_nextButton_clicked();
 
 private:
-    Ui::LimitedWordsTest *ui;
+    Ui::LimitedWordsTest *ui = nullptr;
     QString engWord;
-    unsigned short wordsLimit = 10;
+    unsigned short wordsLimit;
     unsigned short wordsCounter = 1;
     unsigned short correctAnswersCounter = 0;
 };
