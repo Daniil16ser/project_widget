@@ -106,18 +106,3 @@ private:
         }
     }
 };
-/*
-int main() {
-    KeyValueStore kvStore("mydatabase.db");
-
-    kvStore.add("key1", "10");
-    kvStore.add("key2", "20");
-
-    kvStore.printAll(); // Вывод всех ключей и значений
-
-    kvStore.remove("key1");
-    kvStore.printAll(); // Проверка после удаления
-
-    return 0;
-}
-*/
