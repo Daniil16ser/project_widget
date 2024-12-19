@@ -1,4 +1,4 @@
-#include "database.h"
+#include "database3.h"
 int main() {
     KeyValueStore kvStore("mydatabase.db");
 
@@ -15,6 +15,8 @@ int main() {
     if (result == -1) {        std::cout << "Ключ не найден, возвращено значение: -1" << std::endl;
     }
     std::cout << result << std::endl;
+    kvStore.add("key3", "value3");
+    kvStore.printAll();
 
     return 0;
 }
