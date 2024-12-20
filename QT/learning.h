@@ -25,7 +25,7 @@ private slots:
 
 private:
     Ui::Learning *ui = nullptr;
-    QString rusWord;
+    std::pair< std::string, std::string> parsik;
 };
 
 #endif // LEARNING_H

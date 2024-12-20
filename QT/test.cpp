@@ -22,7 +22,6 @@ void Test::on_backButton_clicked()
 
     this -> close();
     emit English();
-    delete this;
 }
 
 void Test::on_endlessTestButton_clicked()

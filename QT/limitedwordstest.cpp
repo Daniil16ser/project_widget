@@ -1,6 +1,6 @@
 #include "limitedwordstest.h"
 #include "ui_limitedwordstest.h"
-#include <QString>
+#include "database3.h"
 
 LimitedWordsTest::LimitedWordsTest(unsigned short wordsLimit_, QWidget *parent)
     : QMainWindow(parent)
@@ -8,12 +8,12 @@ LimitedWordsTest::LimitedWordsTest(unsigned short wordsLimit_, QWidget *parent)
     , wordsLimit(wordsLimit_)
 {
     ui->setupUi(this);
+    setAttribute(Qt::WA_DeleteOnClose);
     ui->nextButton->hide();
     ui->score2Label->hide();
     ui->wordsLimitLabel->setText(QString::number(wordsLimit));
-    QString nextWord = "AAAAA"; // Нужно реализовать функцию, возвращающую новое слово для перевода из БД
-    engWord = nextWord;
-    ui->engWordLabel->setText(nextWord);
+    //parsik = store.getRandomPairs(wordsLimit);
+    //ui->engWordLabel->setText(parsik[0].first);
 }
 
 LimitedWordsTest::~LimitedWordsTest()
@@ -25,7 +25,6 @@ void LimitedWordsTest::on_backButton_clicked()
 {
     this -> close();
     emit Test();
-    delete this;
 }
 
 void LimitedWordsTest::on_checkButton_clicked()
@@ -33,15 +32,14 @@ void LimitedWordsTest::on_checkButton_clicked()
     ui->checkButton->setDisabled(true);
     ui->rusWordField->setDisabled(true);
     QString rusWord = ui->rusWordField->text();
-    QString answer = "AAAAA"; // Нужно реализовать функцию, возвращающую перевод слова из БД
-    if (answer == rusWord) {
+    /*if (rusWord.compare(parsik[index].second) == 0) {
         ui->correctOrWrongLabel->setText("Correct!");
-        ui->correctAnswerLabel->setText("");
+        ui->correctAnswerLabel->clear();
         ++correctAnswersCounter;
     } else {
         ui->correctOrWrongLabel->setText("Wrong! Correct answer is");
-        ui->correctAnswerLabel->setText(answer);
-    }
+        ui->correctAnswerLabel->setText(parsik[index].second);
+    }*/
     if (++wordsCounter <= wordsLimit) {
         ui->nextButton->show();
     } else {
@@ -54,13 +52,11 @@ void LimitedWordsTest::on_checkButton_clicked()
 void LimitedWordsTest::on_nextButton_clicked()
 {
     ui->nextButton->hide();
-    ui->correctOrWrongLabel->setText("");
-    ui->correctAnswerLabel->setText("");
-    ui->rusWordField->setText("");
+    ui->correctOrWrongLabel->clear();
+    ui->correctAnswerLabel->clear();
+    ui->rusWordField->clear();
     ui->wordsCounterLabel->setText(QString::number(wordsCounter));
-    QString nextWord = "BBBBB"; // Нужно реализовать функцию, возвращающую новое слово для перевода из БД
-    engWord = nextWord;
-    ui->engWordLabel->setText(nextWord);
+    //ui->engWordLabel->setText(parsik[++index].first);
     ui->checkButton->setEnabled(true);
     ui->rusWordField->setEnabled(true);
 }

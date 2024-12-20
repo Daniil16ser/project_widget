@@ -1,6 +1,8 @@
 #ifndef ENGLISH_H
 #define ENGLISH_H
 
+#include "dictionary.h"
+#include "test.h"
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
@@ -24,6 +26,8 @@ private slots:
 
 private:
     Ui::English *ui = nullptr;
+    Dictionary *dictionaryWindow = nullptr;
+    Test *testWindow = nullptr;
 };
 
 #endif // ENGLISH_H

@@ -25,10 +25,12 @@ private slots:
 
 private:
     Ui::LimitedMistakesTest *ui = nullptr;
-    QString engWord;
+    std::vector<std::pair< std::string, std::string>> parsik;
+    unsigned short wordsLimit;
     unsigned short mistakesLimit;
     unsigned short mistakesCounter = 0;
     unsigned short correctAnswersCounter = 0;
+    unsigned short index = 0;
 };
 
 #endif // LIMITEDMISTAKESTEST_H

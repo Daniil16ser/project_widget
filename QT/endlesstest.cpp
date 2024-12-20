@@ -1,14 +1,15 @@
 #include "endlesstest.h"
 #include "ui_endlesstest.h"
+#include "database3.h"
 
 EndlessTest::EndlessTest(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::EndlessTest)
 {
     ui->setupUi(this);
-    QString nextWord = "AAAAA"; // Нужно реализовать функцию, возвращающую новое слово для перевода из БД
-    ui->engWordLabel->setText(nextWord);
-    engWord = nextWord;
+    setAttribute(Qt::WA_DeleteOnClose);
+    //parsik = store.getRandomPairs(wordsLimit);
+    //ui->engWordLabel->setText(parsik[0].first);
 }
 
 EndlessTest::~EndlessTest()
@@ -20,7 +21,6 @@ void EndlessTest::on_backButton_clicked()
 {
     this -> close();
     emit Test();
-    delete this;
 }
 
 void EndlessTest::on_checkButton_clicked()
@@ -28,24 +28,25 @@ void EndlessTest::on_checkButton_clicked()
     ui->checkButton->setDisabled(true);
     ui->rusWordField->setDisabled(true);
     QString rusWord = ui->rusWordField->text();
-    QString answer = "AAAAA"; // Нужно реализовать функцию, возвращающую перевод слова из БД
-    if (answer == rusWord) {
+    /*if (parsik[index].second == rusWord) {
         ui->correctOrWrongLabel->setText("Correct!");
-        ui->correctAnswerLabel->setText("");
+        ui->correctAnswerLabel->clear();
     } else {
         ui->correctOrWrongLabel->setText("Wrong! Correct answer is");
-        ui->correctAnswerLabel->setText(answer);
-    }
+        ui->correctAnswerLabel->setText(parsik[index].second);
+    }*/
 }
 
 void EndlessTest::on_nextButton_clicked()
 {
-    QString nextWord = "BBBBB"; // Нужно реализовать функцию, возвращающую новое слово для перевода из БД
-    ui->engWordLabel->setText(nextWord);
-    engWord = nextWord;
-    ui->correctOrWrongLabel->setText("");
-    ui->correctAnswerLabel->setText("");
-    ui->rusWordField->setText("");
+    if (++index == parsik.size()) {
+        index = 0;
+        //parsik = store.getRandomPairs(wordsLimit);
+    }
+    //ui->engWordLabel->setText(parsik[index].first);
+    ui->correctOrWrongLabel->clear();
+    ui->correctAnswerLabel->clear();
+    ui->rusWordField->clear();
     ui->checkButton->setEnabled(true);
     ui->rusWordField->setEnabled(true);
 }

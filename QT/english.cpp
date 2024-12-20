@@ -1,25 +1,26 @@
 #include "english.h"
 #include "./ui_english.h"
-#include "dictionary.h"
 #include "learning.h"
-#include "test.h"
 
 English::English(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::English)
+    , dictionaryWindow(new Dictionary())
+    , testWindow(new Test())
 {
     ui->setupUi(this);
+    connect(dictionaryWindow, &Dictionary::English, this, &English::show);
+    connect(testWindow, &Test::English, this, &English::show);
 }
 
 English::~English()
 {
+    delete dictionaryWindow;
     delete ui;
 }
 
 void English::on_dictionaryButton_clicked()
 {
-    Dictionary *dictionaryWindow = new Dictionary();
-    connect(dictionaryWindow, &Dictionary::English, this, &English::show);
     dictionaryWindow -> show();
     this -> close();
 }
@@ -34,8 +35,6 @@ void English::on_learningButton_clicked()
 
 void English::on_testButton_clicked()
 {
-    Test *testWindow = new Test();
-    connect(testWindow, &Test::English, this, &English::show);
     testWindow -> show();
     this -> close();
 }

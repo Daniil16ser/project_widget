@@ -25,7 +25,9 @@ private slots:
 
 private:
     Ui::EndlessTest *ui = nullptr;
-    QString engWord;
+    std::vector<std::pair< std::string, std::string>> parsik;
+    unsigned short wordsLimit;
+    unsigned short index = 0;
 };
 
 #endif // ENDLESSTEST_H

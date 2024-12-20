@@ -25,10 +25,11 @@ private slots:
 
 private:
     Ui::LimitedWordsTest *ui = nullptr;
-    QString engWord;
+    std::vector<std::pair< std::string, std::string>> parsik;
     unsigned short wordsLimit;
     unsigned short wordsCounter = 1;
     unsigned short correctAnswersCounter = 0;
+    unsigned short index = 0;
 };
 
 #endif // LIMITEDWORDSTEST_H

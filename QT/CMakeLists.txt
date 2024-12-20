@@ -9,6 +9,8 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+
+
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets LinguistTools)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools)
 
@@ -19,6 +21,9 @@ set(PROJECT_SOURCES
         english.cpp
         english.h
         english.ui
+	    sqlite3.h
+        sqlite3.c
+	    database3.h
         ${TS_FILES}
 )
 
@@ -32,7 +37,6 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         endlesstest.h endlesstest.cpp endlesstest.ui
         limitedwordstest.h limitedwordstest.cpp limitedwordstest.ui
         limitedmistakestest.h limitedmistakestest.cpp limitedmistakestest.ui
-
 
 
     )
