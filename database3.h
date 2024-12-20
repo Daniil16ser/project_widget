@@ -14,7 +14,7 @@ public:
             std::cerr << "Не удалось открыть базу данных: " << sqlite3_errmsg(db) << std::endl;
             exit(1);
         }
-        
+        std::cerr << "opened db: " << dbName <<std::endl;
         const char* sqlCreateTable = "CREATE TABLE IF NOT EXISTS kv_store (key TEXT PRIMARY KEY, value TEXT);";
         executeSQL(sqlCreateTable);
 
@@ -27,6 +27,7 @@ public:
         }
 
         words = this->getAll();
+        std::cerr << "ok" << std::endl;
         sqlite3_finalize(stmt);
     }
 
@@ -53,6 +54,9 @@ public:
             std::cerr << "Ошибка выполнения SQL запроса: " << sqlite3_errmsg(db) << std::endl;
         }
         words.push_back(std::pair<std::string, std::string>(key, value));
+        for (int i = 0 ; i < words.size(); ++i){
+            std::cout << words[i].first << std::endl;
+        }
         
         sqlite3_finalize(stmt);
     }
