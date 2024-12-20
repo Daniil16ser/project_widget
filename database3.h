@@ -52,12 +52,13 @@ public:
         if (sqlite3_step(stmt) != SQLITE_DONE) {
             std::cerr << "Ошибка выполнения SQL запроса: " << sqlite3_errmsg(db) << std::endl;
         }
+        words.push_back(std::pair<std::string, std::string>(key, value));
         
         sqlite3_finalize(stmt);
     }
 
     void remove(const std::string& key) {
-        if (not(find(key, words))){
+        if (!(find(key, words))){
             throw(std::runtime_error("This word not in dictionary"));
         }
         std::string sqlDelete = "DELETE FROM kv_store WHERE key = ?;";
@@ -73,13 +74,18 @@ public:
         if (sqlite3_step(stmt) != SQLITE_DONE) {
             std::cerr << "Ошибка выполнения SQL запроса: " << sqlite3_errmsg(db) << std::endl;
         }
-
+        for (int i = 0; i < words.size(); ++i){
+            if (words[i].first == key){
+                words.erase(words.begin() + i);
+                break;
+            }
+        }
         sqlite3_finalize(stmt);
     }
 
     
     std::string get(const std::string& key) {
-        if (not(find(key, words))){
+        if (!(find(key, words))){
             throw std::runtime_error("This word not in dictionary");
         } 
         std::string sqlSelect = "SELECT value FROM kv_store WHERE key = ?;";
@@ -168,6 +174,9 @@ public:
         return false;
 
         return 0;
+    }
+    int len_words(){
+        return words.size();
     }
 
 private:
